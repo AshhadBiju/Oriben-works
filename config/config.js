@@ -1,4 +1,14 @@
 const dotenv = require("dotenv"); // Import dotenv for environment variables
+const { Sequelize } = require("sequelize");
+
+// Create a Sequelize instance
+const sequelize = new Sequelize("database_name", "username", "password", {
+  host: "localhost",
+  dialect: "postgres", // or your database dialect
+});
+
+module.exports = sequelize;
+
 dotenv.config(); // Load environment variables from a .env file if present
 
 module.exports = {
