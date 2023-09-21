@@ -10,14 +10,16 @@ const {
   createUser,
   getUserById,
   getAllUser,
-  deleteAllUser,
+  deleteAUser,
+  updateAUser,
 } = require("../controllers/userController");
 
 // Define routes for user-related actions
 router.post("/", createUser);
 router.get("/:id", getUserById);
 router.get("/", getAllUser);
-router.delete("/", deleteAllUser);
+router.delete("/:id", deleteAUser);
+router.put("/:id", updateAUser);
 // Add more routes as needed
 
 module.exports = router;

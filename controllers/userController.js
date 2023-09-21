@@ -39,13 +39,33 @@ const getAllUser = async (req, res) => {
     res.status(500).json({ error: "Failed to fetch user" });
   }
 };
-const deleteAllUser = async (req, res) => {
+const deleteAUser = async (req, res) => {
   try {
+    const id = req.params.id;
+    //const {name,address,email,phonenumber}=req.bo
     const user = await User.destroy({
       where: {
-        id: "14",
+        id: id,
       },
     });
+    //res.json(user);
+    res.status(200).json({ message: "deleted user" });
+  } catch (error) {
+    console.error("Error fetching user:", error);
+    res.status(500).json({ error: "Failed to fetch user" });
+  }
+};
+// Add more controller methods as needed
+const updateAUser = async (req, res) => {
+  try {
+    const id = req.params.id;
+    //const {name,address,email,phonenumber}=req.bo
+    const user = await User.update(req.body, {
+      where: {
+        id: id,
+      },
+    });
+    // const user= await User.findOneAndUpdate({})
     // if (!user) {
     //   return res.status(404).json({ error: "User not found" });
     // }
@@ -57,5 +77,11 @@ const deleteAllUser = async (req, res) => {
 };
 // Add more controller methods as needed
 
-module.exports = { createUser, getUserById, getAllUser, deleteAllUser };
+module.exports = {
+  createUser,
+  getUserById,
+  getAllUser,
+  deleteAUser,
+  updateAUser,
+};
 //createUser();
