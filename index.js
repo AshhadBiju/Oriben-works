@@ -11,12 +11,12 @@ const express = require("express");
 // ...
 const app = express();
 const userRoutes = require("./routes/userRoutes"); // Import your user routes
-
-// Middleware for parsing JSON
+const productRoutes = require("./routes/productRoutes");
 app.use(express.json());
 
 // Use the user routes
 app.use("/api/users", userRoutes);
+app.use("/api/product", productRoutes);
 // You can specify a prefix like '/api'
 
 const PORT = process.env.PORT || 3000;
