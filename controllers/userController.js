@@ -1,5 +1,5 @@
 // controllers/userController.js
-const { User } = require("../models");
+const { User, Product } = require("../models");
 //const sequelize = require("../config/config"); // Import the Sequelize instance
 
 const createUser = async (req, res) => {
@@ -37,6 +37,21 @@ const getAllUser = async (req, res) => {
   } catch (error) {
     console.error("Error fetching user:", error);
     res.status(500).json({ error: "Failed to fetch user" });
+  }
+};
+// const userproduct = async()=>
+// {User.findOne({ where: { username: "Adam" } }).then(
+//   (userproduct) => {
+
+//   }}
+
+// );
+const userproduct = async (req, res) => {
+  console.log("user");
+  const user = await User.findOne({ where: { name: "Bruce" } });
+  console.log(user);
+  if (user) {
+    res.status(200).json({ user, include: Product });
   }
 };
 const deleteAUser = async (req, res) => {
@@ -83,5 +98,6 @@ module.exports = {
   getAllUser,
   deleteAUser,
   updateAUser,
+  userproduct,
 };
 //createUser();

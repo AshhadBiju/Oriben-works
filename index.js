@@ -22,7 +22,14 @@ app.use("/api/userdetails", userdetails);
 // You can specify a prefix like '/api'
 
 const PORT = process.env.PORT || 3000;
-
+// Object.keys(models).forEach((modelName) => {
+//   if ("associate" in models[modelName]) {
+//     models[modelName].associate(models);
+//   }
+// });
+// sequelize.sync().then(() => {
+//   console.log("Database and tables are synchronized");
+// });
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });

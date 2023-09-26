@@ -1,9 +1,13 @@
 "use strict";
 const { Model } = require("sequelize");
+const { Product } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
     static associate(models) {
       // define association here
+      User.hasOne(models.Product, {
+        foreignKey: "customerid",
+      });
     }
   }
   User.init(
