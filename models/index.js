@@ -16,6 +16,7 @@ const models = {
   Sequelize,
   User: require("./user")(sequelize, Sequelize.DataTypes),
   Product: require("./product")(sequelize, Sequelize.DataTypes),
+  Category: require("./category")(sequelize, Sequelize.DataTypes),
   //token: require('./token')(sequelize, Sequelize.DataTypes),
 };
 
