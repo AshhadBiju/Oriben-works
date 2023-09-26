@@ -18,6 +18,9 @@ module.exports = {
       country: {
         type: Sequelize.STRING,
       },
+      customerid: {
+        type: Sequelize.INTEGER,
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,

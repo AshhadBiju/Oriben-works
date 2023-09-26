@@ -1,4 +1,6 @@
 // controllers/userController.js
+const { Model } = require("sequelize");
+const models = require("../models");
 const { User, Product } = require("../models");
 //const sequelize = require("../config/config"); // Import the Sequelize instance
 
@@ -48,10 +50,12 @@ const getAllUser = async (req, res) => {
 // );
 const userproduct = async (req, res) => {
   console.log("user");
-  const user = await User.findOne({ where: { name: "Bruce" } });
-  console.log(user);
+  const user = await User.findAll({
+    include: [{ model: Product }],
+  });
+  //console.log(user);
   if (user) {
-    res.status(200).json({ user, include: Product });
+    res.status(200).json(user);
   }
 };
 const deleteAUser = async (req, res) => {

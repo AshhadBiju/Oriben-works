@@ -4,8 +4,13 @@ const { Product } = require("../models");
 
 const createProduct = async (req, res) => {
   try {
-    const { productname, price, country } = req.body;
-    const newProduct = await Product.create({ productname, price, country });
+    const { productname, price, country, customerid } = req.body;
+    const newProduct = await Product.create({
+      productname,
+      price,
+      country,
+      customerid,
+    });
     res.status(201).json(newProduct);
     console.log("Product created:", newProduct.toJSON());
   } catch (error) {
@@ -49,7 +54,7 @@ const deleteAProduct = async (req, res) => {
       },
     });
     res.json(product);
-    res.status(200).json({ message: "deleted Product" });
+    console.log("DELETED PRODUCT");
   } catch (error) {
     console.error("Error fetching Product:", error);
     res.status(500).json({ error: "Failed to fetch Product" });
