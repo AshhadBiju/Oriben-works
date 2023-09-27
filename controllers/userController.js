@@ -1,13 +1,13 @@
 // controllers/userController.js
 const { Model } = require("sequelize");
 const models = require("../models");
-const { User, Product } = require("../models");
+const { User } = require("../models");
 //const sequelize = require("../config/config"); // Import the Sequelize instance
 
 const createUser = async (req, res) => {
   try {
-    const { name, address, email, phonenumber } = req.body;
-    const newUser = await User.create({ name, address, email, phonenumber });
+    const { name, email, phonenumber, username, password, role, isActive } = req.body;
+    const newUser = await User.create({ name, email, phonenumber, username, password, role, isActive });
     res.status(201).json(newUser);
     console.log("User created:", newUser.toJSON());
   } catch (error) {
@@ -32,30 +32,10 @@ const getUserById = async (req, res) => {
 const getAllUser = async (req, res) => {
   try {
     const user = await User.findAll();
-    // if (!user) {
-    //   return res.status(404).json({ error: "User not found" });
-    // }
     res.json(user);
   } catch (error) {
     console.error("Error fetching user:", error);
     res.status(500).json({ error: "Failed to fetch user" });
-  }
-};
-// const userproduct = async()=>
-// {User.findOne({ where: { username: "Adam" } }).then(
-//   (userproduct) => {
-
-//   }}
-
-// );
-const userproduct = async (req, res) => {
-  console.log("user");
-  const user = await User.findAll({
-    include: [{ model: Product }],
-  });
-  //console.log(user);
-  if (user) {
-    res.status(200).json(user);
   }
 };
 const deleteAUser = async (req, res) => {
@@ -74,7 +54,6 @@ const deleteAUser = async (req, res) => {
     res.status(500).json({ error: "Failed to fetch user" });
   }
 };
-// Add more controller methods as needed
 const updateAUser = async (req, res) => {
   try {
     const id = req.params.id;
@@ -94,7 +73,6 @@ const updateAUser = async (req, res) => {
     res.status(500).json({ error: "Failed to fetch user" });
   }
 };
-// Add more controller methods as needed
 
 module.exports = {
   createUser,
@@ -102,6 +80,5 @@ module.exports = {
   getAllUser,
   deleteAUser,
   updateAUser,
-  userproduct,
 };
 //createUser();

@@ -2,7 +2,7 @@ const dotenv = require("dotenv"); // Import dotenv for environment variables
 const { Sequelize } = require("sequelize");
 
 // Create a Sequelize instance
-const sequelize = new Sequelize("database_name", "username", "password", {
+const sequelize = new Sequelize("collection", "username", "password", {
   host: "localhost",
   dialect: "postgres", // or your database dialect
 });
@@ -15,7 +15,7 @@ module.exports = {
   development: {
     username: process.env.DB_USERNAME || "postgres",
     password: process.env.DB_PASSWORD || "2000",
-    database: process.env.DB_NAME || "demo-api",
+    database: process.env.DB_NAME || "collection",
     host: process.env.DB_HOST || "localhost",
     dialect: "postgres",
   },
