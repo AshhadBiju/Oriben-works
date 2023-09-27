@@ -1,14 +1,22 @@
 const { Category } = require("../models");
 const path = require("path");
+
 const createCategory = async (req, res) => {
-
   try {
-
     const { categoryname } = req.body;
-    
     const imageName = req.file.originalname;
     const imageURL = path.join("public/image/", imageName);
+    //Check if category exists
+      const existingCategory = await Category.findOne({
+      where: {
+        categoryname: categoryname,
+      },
+    });
 
+    if (existingCategory) {
+      // If the category name already exists, return an error response
+      return res.status(400).json({ error: "Category already exists" });
+    }
     const newCategory = await Category.create({
       categoryname,
       imageURL,
