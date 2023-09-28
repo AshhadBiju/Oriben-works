@@ -1,14 +1,14 @@
 // controllers/userController.js
 const { Model } = require("sequelize");
 const models = require("../models");
-const { User } = require("../models");
+const { User,Area,Plans } = require("../models");
 //const sequelize = require("../config/config"); // Import the Sequelize instance
 
 const createUser = async (req, res) => {
   try {
     const { name, email, phonenumber, username, password, role, isActive } = req.body;
-    const newUser = await User.create({ name, email, phonenumber, username, password, role, isActive });
-    res.status(201).json(newUser);
+    const newUser = await User.create( req.body);
+    res.status(200).json(newUser);
     console.log("User created:", newUser.toJSON());
   } catch (error) {
     console.error("Error creating user:", error);
@@ -31,7 +31,9 @@ const getUserById = async (req, res) => {
 };
 const getAllUser = async (req, res) => {
   try {
-    const user = await User.findAll();
+    const user = await User.findAll({
+      include:[{model:Area},{model:Plans}]
+    });
     res.json(user);
   } catch (error) {
     console.error("Error fetching user:", error);

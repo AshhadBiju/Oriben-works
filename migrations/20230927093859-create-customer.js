@@ -25,15 +25,15 @@ module.exports = {
         type: Sequelize.STRING
       },
       userID: {
-        type: Sequelize.STRING,
+        type: Sequelize.UUID,
         allowNull:false,
       },
       areaID: {
-        type: Sequelize.STRING,
+        type: Sequelize.UUID,
         allowNull:false,
       },
       planID: {
-        type: Sequelize.STRING,
+        type: Sequelize.UUID,
         allowNull:false,
       },
       createdAt: {

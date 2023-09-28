@@ -8,8 +8,8 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      Area.belongsTo(models.Customer, {
-        foreignKey: "userID", //foreignKey added here
+      Area.belongsTo(models.User, {
+        foreignKey: "id", //foreignKey added here
       });
     }
   }
@@ -26,7 +26,7 @@ module.exports = (sequelize, DataTypes) => {
       district: DataTypes.STRING,
       state: DataTypes.STRING,
       pincode: DataTypes.STRING,
-      userID: DataTypes.STRING,
+      userID: DataTypes.UUID,
     },
     {
       sequelize,

@@ -22,11 +22,11 @@ module.exports = {
         allowNull:false,
       },
       customerID: {
-        type: Sequelize.STRING,
+        type: Sequelize.UUID,
         allowNull:false,
       },
       userID: {
-        type: Sequelize.STRING,
+        type: Sequelize.UUID,
         allowNull:false,
       },
       createdAt: {

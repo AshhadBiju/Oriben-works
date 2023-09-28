@@ -3,7 +3,13 @@ const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
   class Customer extends Model {
     static associate(models) {
-      Product.belongsTo(models.User, {
+      Customer.belongsTo(models.User, {
+        foreignKey: "id", //foreignKey added here
+      });
+      Customer.belongsTo(models.Area, {
+        foreignKey: "id", //foreignKey added here
+      });
+      Customer.belongsTo(models.Plans, {
         foreignKey: "id", //foreignKey added here
       });
     }
@@ -22,9 +28,9 @@ module.exports = (sequelize, DataTypes) => {
       mobileNumber: DataTypes.STRING,
       registerNumber: DataTypes.STRING,
       address: DataTypes.STRING,
-      userID: DataTypes.STRING,
-      areaID: DataTypes.STRING,
-      planID: DataTypes.STRING,
+      userID: DataTypes.UUID,
+      areaID: DataTypes.UUID,
+      planID: DataTypes.UUID,
     },
     {
       sequelize,
