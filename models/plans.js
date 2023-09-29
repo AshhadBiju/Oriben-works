@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: "id", //foreignKey added here
       });
       Plans.belongsTo(models.Customer, {
-        foreignKey: "userID", //foreignKey added here
+        foreignKey: "id", //foreignKey added here
       });
     }
   }

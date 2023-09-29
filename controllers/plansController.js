@@ -63,11 +63,7 @@ const updateAPlans = async (req, res) => {
         id: id,
       },
     });
-    // const Plans= await Plans.findOneAndUpdate({})
-    // if (!Plans) {
-    //   return res.status(404).json({ error: "Plans not found" });
-    // }
-    res.json(plans);
+    res.status(201).json({ message: "Updated Plans" });
   } catch (error) {
     console.error("Error fetching Plans:", error);
     res.status(500).json({ error: "Failed to fetch Plans" });

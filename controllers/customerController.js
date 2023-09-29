@@ -41,14 +41,12 @@ const getAllCustomer = async (req, res) => {
 const deleteACustomer = async (req, res) => {
   try {
     const id = req.params.id;
-    //const {name,address,email,mobileNumber}=req.bo
     const customer = await Customer.destroy({
       where: {
         id: id,
       },
     });
-    //res.json(Customer);
-    res.status(200).json({ message: "deleted Customer" });
+    res.status(200).json({ message: "Deleted Customer" });
   } catch (error) {
     console.error("Error fetching Customer:", error);
     res.status(500).json({ error: "Failed to fetch Customer" });
@@ -57,17 +55,12 @@ const deleteACustomer = async (req, res) => {
 const updateACustomer = async (req, res) => {
   try {
     const id = req.params.id;
-    //const {name,address,email,mobileNumber}=req.bo
     const customer = await Customer.update(req.body, {
       where: {
         id: id,
       },
     });
-    // const Customer= await Customer.findOneAndUpdate({})
-    // if (!Customer) {
-    //   return res.status(404).json({ error: "Customer not found" });
-    // }
-    res.json(customer);
+    res.status(201).json({ message: "Updated Customer" });
   } catch (error) {
     console.error("Error fetching Customer:", error);
     res.status(500).json({ error: "Failed to fetch Customer" });

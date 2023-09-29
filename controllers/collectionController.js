@@ -31,8 +31,8 @@ const getCollectionById = async (req, res) => {
 };
 const getAllCollection = async (req, res) => {
   try {
-    const collection = await collection.findAll();
-    res.json(collection);
+    const collections = await Collection.findAll();
+    res.json(collections);
   } catch (error) {
     console.error("Error fetching Collection:", error);
     res.status(500).json({ error: "Failed to fetch Collection" });
@@ -41,13 +41,11 @@ const getAllCollection = async (req, res) => {
 const deleteACollection = async (req, res) => {
   try {
     const id = req.params.id;
-    //const {amount,customerID,email,do
     const collection = await Collection.destroy({
       where: {
         id: id,
       },
     });
-    //res.json(Collection);
     res.status(200).json({ message: "deleted Collection" });
   } catch (error) {
     console.error("Error fetching Collection:", error);
@@ -57,17 +55,12 @@ const deleteACollection = async (req, res) => {
 const updateACollection = async (req, res) => {
   try {
     const id = req.params.id;
-    //const {amount,customerID,email,do
     const collection = await Collection.update(req.body, {
       where: {
         id: id,
       },
     });
-    // const Collection= await Collection.findOneAndUpdate({})
-    // if (!Collection) {
-    //   return res.status(404).json({ error: "Collection not found" });
-    // }
-    res.json(collection);
+    res.status(201).json({ message: "Updated Collection" });
   } catch (error) {
     console.error("Error fetching Collection:", error);
     res.status(500).json({ error: "Failed to fetch Collection" });

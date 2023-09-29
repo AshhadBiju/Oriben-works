@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: "id", //foreignKey added here
       });
       Collection.hasMany(models.Customer, {
-        foreignKey: "customerID", //foreignKey added here
+        foreignKey: "id", //foreignKey added here
       });
     }
   }

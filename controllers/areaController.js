@@ -63,17 +63,12 @@ const deleteAArea = async (req, res) => {
 const updateAArea = async (req, res) => {
   try {
     const id = req.params.id;
-    //const {city,pincode,email,do
-    const area = await Area.upstate(req.body, {
+    const areaupdate = await Area.update(req.body, {
       where: {
         id: id,
       },
     });
-    // const Area= await Area.findOneAndUpstate({})
-    // if (!Area) {
-    //   return res.status(404).json({ error: "Area not found" });
-    // }
-    res.json(area);
+    res.status(200).json({ message: "Area Updated" });
   } catch (error) {
     console.error("Error fetching Area:", error);
     res.status(500).json({ error: "Failed to fetch Area" });

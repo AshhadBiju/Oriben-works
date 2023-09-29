@@ -10,6 +10,11 @@ const areaRoutes = require("./routes/areaRoutes");
 
 app.use(express.json());
 
+// parse json request body
+app.use(express.json());
+
+// parse urlencoded request body
+app.use(express.urlencoded({ extended: true }));
 // Use the user routes
 app.use("/api/users", userRoutes);
 app.use("/api/plans", plansRoutes);
